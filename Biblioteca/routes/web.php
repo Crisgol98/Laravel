@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BookController;
-use App\Http\Controllers\Api\BookController as ApiBookController;
+use App\Http\Controllers\LibroController;
+use App\Http\Controllers\AutorController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,13 +15,11 @@ use App\Http\Controllers\Api\BookController as ApiBookController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/libros');
 });
-
-Route::get('/books/create', [BookController::class, 'create']);
-Route::post('/books', [BookController::class, 'store']);
-Route::get('/books', [BookController::class, 'index']);
-Route::get('/books/author/{authorId}', [BookController::class, 'filterByAuthor']);
-// Api
-Route::get('/api/books', [ApiBookController::class, 'index']);
-Route::get('/api/books/{id}', [ApiBookController::class, 'show']);
+Route::resource('libros', LibroController::class);
+Route::resource('autores', AutorController::class);
+Route::get('libros.create',[LibroController::class, 'create']);
+Route::get('libros.filtrado', [LibroController::class, 'enviarFiltro'])->name('libros.enviarFiltro');
+Route::post('filtrar', [LibroController::class, 'filtrar'])->name('libros.filtrar');
+Route::get('/libros/autor/{autorId}', [LibroController::class, 'filterByAuthor']);

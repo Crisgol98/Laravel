@@ -6,12 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Autor extends Model
 {
-    protected $table = 'autores'; // Especifica el nombre de la tabla si no sigue la convención de nombres
-
-    protected $fillable = ['nombre', 'nacimiento'];
-
+    protected $table = 'autor';
     public function libros()
     {
-        return $this->hasMany(Libro::class, 'autor_id');
+        return $this->hasMany(Libro::class);
     }
 }
