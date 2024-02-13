@@ -6,55 +6,54 @@ use Illuminate\Http\Request;
 
 class CortoController extends Controller
 {
+    protected $cortos = [
+        [
+        'id' => 1,
+        'titulo' => 'El corto más cortante',
+        'director' => 'María Martín',
+        'sinapsis' => 'Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit, sed do eiusmod tempor incididunt ut labore
+        et dolore magna aliqua.'
+        ],
+        [
+        'id' => 2,
+        'titulo' => 'Sin más',
+        'director' => 'Pepa Pérez',
+        'sinapsis' => 'Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit, sed do eiusmod tempor incididunt ut labore
+        et dolore magna aliqua.'
+        ],
+        [
+        'id' => 3,
+        'titulo' => 'Más o menos',
+        'director' => 'Juan Jiménez',
+        'sinapsis' => 'Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit, sed do eiusmod tempor incididunt ut labore
+        et dolore magna aliqua.'
+        ],
+        [
+        'id' => 4,
+        'titulo' => 'Tira pa\' ya',
+        'director' => 'Sofía Sofín',
+        'sinapsis' => 'Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit, sed do eiusmod tempor incididunt ut labore
+        et dolore magna aliqua.'
+        ],
+        [
+        'id' => 5,
+        'titulo' => 'Miedo',
+        'director' => 'Pepe Parrilla',
+        'sinapsis' => 'Lorem ipsum dolor sit amet, consectetur
+            adipiscing elit, sed do eiusmod tempor incididunt ut labore
+            et dolore magna aliqua.'
+        ]
+    ];
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $cortos = [
-            [
-            'id' => 1,
-            'titulo' => 'El corto más cortante',
-            'director' => 'María Martín',
-            'sinapsis' => 'Lorem ipsum dolor sit amet, consectetur
-            adipiscing elit, sed do eiusmod tempor incididunt ut labore
-            et dolore magna aliqua.'
-            ],
-            [
-            'id' => 2,
-            'titulo' => 'Sin más',
-            'director' => 'Pepa Pérez',
-            'sinapsis' => 'Lorem ipsum dolor sit amet, consectetur
-            adipiscing elit, sed do eiusmod tempor incididunt ut labore
-            et dolore magna aliqua.'
-            ],
-            [
-            'id' => 3,
-            'titulo' => 'Más o menos',
-            'director' => 'Juan Jiménez',
-            'sinapsis' => 'Lorem ipsum dolor sit amet, consectetur
-            adipiscing elit, sed do eiusmod tempor incididunt ut labore
-            et dolore magna aliqua.'
-            ],
-            [
-            'id' => 4,
-            'titulo' => 'Tira pa\' ya',
-            'director' => 'Sofía Sofín',
-            'sinapsis' => 'Lorem ipsum dolor sit amet, consectetur
-            adipiscing elit, sed do eiusmod tempor incididunt ut labore
-            et dolore magna aliqua.'
-            ],
-            [
-            'id' => 5,
-            'titulo' => 'Miedo',
-            'director' => 'Pepe Parrilla',
-            'sinapsis' => 'Lorem ipsum dolor sit amet, consectetur
-                adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                et dolore magna aliqua.'
-            ]
-        ];
-    
-        return view('cortos.index', compact('cortos'));
+        return view('cortos.index', ["cortos" => $this->cortos]);
     }
 
     /**
@@ -78,51 +77,9 @@ class CortoController extends Controller
      */
     public function show(string $id)
     {
-        $cortos = [
-            [
-            'id' => 1,
-            'titulo' => 'El corto más cortante',
-            'director' => 'María Martín',
-            'sinapsis' => 'Lorem ipsum dolor sit amet, consectetur
-            adipiscing elit, sed do eiusmod tempor incididunt ut labore
-            et dolore magna aliqua.'
-            ],
-            [
-            'id' => 2,
-            'titulo' => 'Sin más',
-            'director' => 'Pepa Pérez',
-            'sinapsis' => 'Lorem ipsum dolor sit amet, consectetur
-            adipiscing elit, sed do eiusmod tempor incididunt ut labore
-            et dolore magna aliqua.'
-            ],
-            [
-            'id' => 3,
-            'titulo' => 'Más o menos',
-            'director' => 'Juan Jiménez',
-            'sinapsis' => 'Lorem ipsum dolor sit amet, consectetur
-            adipiscing elit, sed do eiusmod tempor incididunt ut labore
-            et dolore magna aliqua.'
-            ],
-            [
-            'id' => 4,
-            'titulo' => 'Tira pa\' ya',
-            'director' => 'Sofía Sofín',
-            'sinapsis' => 'Lorem ipsum dolor sit amet, consectetur
-            adipiscing elit, sed do eiusmod tempor incididunt ut labore
-            et dolore magna aliqua.'
-            ],
-            [
-            'id' => 5,
-            'titulo' => 'Miedo',
-            'director' => 'Pepe Parrilla',
-            'sinapsis' => 'Lorem ipsum dolor sit amet, consectetur
-                adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                et dolore magna aliqua.'
-            ]
-        ];
-        $corto = collect($cortos)->firstWhere('id', $id);
+        $corto = collect($this->cortos)->firstWhere('id', $id);
 
-        return view('cortos.show', compact('corto'));
+        return view('cortos.show', ["corto" => $corto]);
     }
 
     /**
