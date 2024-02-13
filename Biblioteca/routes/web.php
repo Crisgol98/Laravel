@@ -20,9 +20,6 @@ Route::get('/', function () {
 });
 Route::resource('libros', LibroController::class);
 Route::resource('autores', AutorController::class);
-Route::get('libros.create',[LibroController::class, 'create']);
 Route::get('libros.filtrado', [LibroController::class, 'enviarFiltro'])->name('libros.enviarFiltro');
 Route::post('filtrar', [LibroController::class, 'filtrar'])->name('libros.filtrar');
 Route::get('/libros/autor/{autorId}', [LibroController::class, 'filterByAuthor']);
-// Api
-Route::apiResource('api/libros', apiLibroController::class);
