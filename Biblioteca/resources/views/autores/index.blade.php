@@ -7,7 +7,6 @@
                 <table class="table table-hover shadow-sm">
                     <thead class="thead-dark">
                         <tr>
-                            <th>ID</th>
                             <th>Nombre</th>
                             <th>Nacimiento</th>
                         </tr>
@@ -15,7 +14,6 @@
                     <tbody>
                         @foreach ($autores as $autor)
                             <tr>
-                                <td>{{ $autor->id }}</td>
                                 <td>{{ $autor->nombre }}</td>
                                 <td>{{ $autor->nacimiento }}</td>
                             </tr>

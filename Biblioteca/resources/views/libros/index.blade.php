@@ -2,7 +2,14 @@
 
 @section('content')
 <div class="container mt-5">
-    <h2 style="text-align: center">Listado de Libros</h2>
+    <h2 style="text-align: center">
+    @if (empty($libros->autor))
+        Listado de libros
+    @endif
+    @if (!empty($libros->autor))
+        Listado de libros de $autor->nombre
+    @endif
+    </h2>
     <table class="table mt-4 table-hover">
         <thead class="thead-dark">
             <tr>
