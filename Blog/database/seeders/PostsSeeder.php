@@ -20,7 +20,7 @@ class PostsSeeder extends Seeder
         $faker = Faker::create();
         for ($i = 0; $i < $nPosts; $i++) {
             $post = new Post();
-            $post->titulo = "Libro de " . $faker->name;
+            $post->titulo = "Libro de " . $faker->firstName;
             $post->contenido = $faker->text;
             $post->usuario_id = $userIds->random();
             $post->save();

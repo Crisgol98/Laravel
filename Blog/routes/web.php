@@ -23,3 +23,4 @@ Route::resource("posts", PostController::class)->only([
 ]);
 
 Route::get("posts/{post}", [PostController::class, "show"])->where("post", "[\d]+")->name("show");
+Route::delete("delete/{id}", [PostController::class, "destroy"])->name("delete");

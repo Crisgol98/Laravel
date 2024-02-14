@@ -18,7 +18,7 @@ class UsuariosSeeder extends Seeder
         $faker = Faker::create();
         for ($i = 0; $i < $nUsuarios; $i++) {
             $usuario = new Usuario();
-            $usuario->name = $faker->name;
+            $usuario->name = $faker->firstName;
             $usuario->password = $faker->sentence;
             $usuario->save();
         }
