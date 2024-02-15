@@ -14,5 +14,6 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(UsuariosSeeder::class);
         $this->call(PostsSeeder::class);
+        $this->call(ComentariosSeeder::Class);
     }
 }

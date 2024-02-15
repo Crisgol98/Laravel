@@ -15,15 +15,17 @@ class PostsSeeder extends Seeder
      */
     public function run(): void
     {
-        $userIds = Usuario::pluck("id");
-        $nPosts = 10;
         $faker = Faker::create();
-        for ($i = 0; $i < $nPosts; $i++) {
-            $post = new Post();
-            $post->titulo = "Libro de " . $faker->firstName;
-            $post->contenido = $faker->text;
-            $post->usuario_id = $userIds->random();
-            $post->save();
+        $nPosts = 3;
+        $usuarios = Usuario::all();
+        foreach($usuarios as $usuario) {
+            for ($i = 0; $i < $nPosts; $i++) {
+                $post = new Post();
+                $post->titulo = "Post de " . $faker->firstName;
+                $post->contenido = $faker->text;
+                $post->usuario_id = $usuario->id;
+                $post->save();
+            }
         }
 
     }

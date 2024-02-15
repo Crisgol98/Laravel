@@ -47,4 +47,8 @@ class Usuario extends Authenticatable
         return $this->hasMany(Post::class);
     }
 
+    function comentario() {
+        return $this->hasMany(Comentario::class);
+    }
+
 }

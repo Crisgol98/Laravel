@@ -10,9 +10,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">{{ $post->titulo }}(
-                            @if ($post->usuario->id == $post->usuario_id)
-                                {{ $post->usuario->name }}
-                            @endif
+                            {{ $post->usuario->name }}
                         )</h5>
                         <a href="{{ route('show', $post->id) }}" class="btn btn-primary">Ver</a>
                         <form action="{{ route('delete', $post->id) }}" method="POST">
