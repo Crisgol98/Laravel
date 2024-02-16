@@ -7,8 +7,8 @@
     @csrf
     @method("put")
     <div class="mb-3 ms-4">
-    <label for="contenido" class="form-label">Edita el titulo</label>
-    <input type="text" class="form-control w-50" id="contenido" name="titulo" rows="5" value="{{$post->titulo}}"></input>
+    <label for="titulo" class="form-label">Edita el titulo</label>
+    <input type="text" class="form-control w-50" id="titulo" name="titulo" rows="5" value="{{$post->titulo}}"></input>
     </div>
     <div class="mb-3 ms-4">
     <label for="contenido" class="form-label">Edita el contenido</label>

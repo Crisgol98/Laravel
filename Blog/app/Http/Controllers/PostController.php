@@ -23,7 +23,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return redirect()->route("inicio");
+        $usuarios = Usuario::all();
+        return view("posts.create", ["usuarios" => $usuarios]);
     }
 
     /**
@@ -31,7 +32,9 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $post = Post::Create($request->all());
+        $posts = Post::with("usuario");
+        return redirect()->route('indexPost', ["posts" => $posts]);
     }
 
     /**
@@ -60,7 +63,7 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
         $post->update($request->all());
-        return redirect()->route('posts.index');
+        return redirect()->route('indexPost');
     }
 
     /**
@@ -69,7 +72,6 @@ class PostController extends Controller
     public function destroy(string $id)
     {
         Post::findOrFail($id)->delete();
-        $posts = Post::all();
-        return redirect()->route("posts.index", ["posts" => $posts]);
+        return redirect()->route("indexPost");
     }
 }

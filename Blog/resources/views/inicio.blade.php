@@ -4,10 +4,13 @@
 
 @section("contenido")
 
-    <h1>Página de Inicio</h1>
+    <div class="container ms-2">
+        <h1>Página de Inicio</h1>
+
+        <form action="{{ route('createPost') }}" method="POST">
+            @csrf
+            <button>Añadir Post</button>
+        </form>
+    </div>
 
 @endsection
-
-<!-- TODO
-    Comentarios
--->

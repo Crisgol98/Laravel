@@ -20,12 +20,13 @@ Route::get('/', function () {
 })->name("inicio");
 
 // Posts
-Route::get("posts/create", [PostController::class, "create"])->name("createPost");
 Route::get("posts", [PostController::class, "index"])->name("indexPost");
 Route::get("posts/{post}", [PostController::class, "show"])->where("post", "[\d]+")->name("showPost");
 Route::delete("posts/{id}/delete", [PostController::class, "destroy"])->name("deletePost");
 Route::put("posts/{id}/edit", [PostController::class, "edit"])->name("editPost");
-Route::post("posts/{id}/update", [PostController::class, "update"])->name("updatePost");
+Route::put("posts/{id}/update", [PostController::class, "update"])->name("updatePost");
+Route::post("posts/create", [PostController::class, "create"])->name("createPost");
+Route::post("posts/store", [PostController::class, "store"])->name("storePost");
 // Comentarios
 Route::delete("posts/{postId}/comentarios/{comentarioId}/delete", [ComentarioController::class, "destroy"])->name("deleteComentario");
 Route::post("posts/{postId}/comentarios/{comentarioId}/edit", [ComentarioController::class, "edit"])->name("editComentario");

@@ -11,7 +11,8 @@ class Post extends Model
 
     protected $fillable = [
         "titulo",
-        "contenido"
+        "contenido",
+        "usuario_id"
     ];
 
     function usuario() {
