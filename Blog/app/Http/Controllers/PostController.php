@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Usuario;
+use App\Models\Comentario;
 
 class PostController extends Controller
 {
@@ -13,7 +14,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::with("usuario")->paginate(5);
+        $posts = Post::with("usuario")->paginate(6);
         return view("posts.index", ["posts" => $posts]);
     }
 
@@ -38,8 +39,9 @@ class PostController extends Controller
      */
     public function show(string $id)
     {
-        $post = Post::findOrFail($id);
-        return view("posts.show", ["post" => $post]);
+        $post = Post::with("usuario")->findOrFail($id);
+        $comentarios = $post->comentario()->get();
+        return view("posts.show", ["post" => $post], ["comentarios" => $comentarios]);
     }
 
     /**
@@ -47,7 +49,8 @@ class PostController extends Controller
      */
     public function edit(string $id)
     {
-        return redirect()->route("inicio");
+        $post = Post::findOrFail($id);
+        return view("posts.edit", ["post" => $post]);
     }
 
     /**
@@ -55,7 +58,9 @@ class PostController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $post->update($request->all());
+        return redirect()->route('posts.index');
     }
 
     /**

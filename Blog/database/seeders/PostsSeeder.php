@@ -21,7 +21,7 @@ class PostsSeeder extends Seeder
         foreach($usuarios as $usuario) {
             for ($i = 0; $i < $nPosts; $i++) {
                 $post = new Post();
-                $post->titulo = "Post de " . $faker->firstName;
+                $post->titulo = "Post sobre " . $faker->firstName;
                 $post->contenido = $faker->text;
                 $post->usuario_id = $usuario->id;
                 $post->save();

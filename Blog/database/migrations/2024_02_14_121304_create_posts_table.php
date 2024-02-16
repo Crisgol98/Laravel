@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->string("titulo");
+            $table->string("titulo", 200);
             $table->text("contenido");
-            $table->foreignId("usuario_id")->references("id")->on("usuarios");
+            $table->foreignId("usuario_id")->references("id")->on("usuarios")->onDelete("cascade");
             $table->timestamps();
         });
     }

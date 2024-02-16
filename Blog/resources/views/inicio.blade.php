@@ -9,6 +9,5 @@
 @endsection
 
 <!-- TODO
-    Borrar y editar un post
     Comentarios
 -->
